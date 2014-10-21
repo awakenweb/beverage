@@ -20,6 +20,7 @@ class Beverage
     protected $current_state = [];
 
     /**
+     * Factory method. Return a new instance of the Beverage task runner
      *
      * @param sting $filepattern
      * @param array $directory
@@ -32,6 +33,7 @@ class Beverage
     }
 
     /**
+     * construct the Beverage task runner and select the files to manipulate
      *
      * @param string $filepattern
      * @param array $dir
@@ -42,8 +44,8 @@ class Beverage
     {
         $finder = new Finder();
         $finder->files()
-            ->ignoreUnreadableDirs()
-            ->name($filepattern);
+                ->ignoreUnreadableDirs()
+                ->name($filepattern);
 
         if ($excludepattern) {
             $finder->notName($excludepattern);
@@ -54,13 +56,19 @@ class Beverage
         }
 
         foreach ($finder as $matching_file) {
-            $basename                       = $matching_file->getBasename();
+
+            $basename = $matching_file->getBasename();
+
             $this->current_state[$basename] = $matching_file->getContents();
         }
-
-        var_dump($this->current_state);
     }
 
+    /**
+     * Run the modules
+     * 
+     * @param type $callbackname
+     * @return \Awakenweb\Beverage\Beverage
+     */
     public function then($callbackname)
     {
 
@@ -70,7 +78,8 @@ class Beverage
     }
 
     /**
-     * Directory where the files will be saved
+     * Define the directory where the files will be saved
+     * 
      * @param string $directory
      */
     public function destination($directory)

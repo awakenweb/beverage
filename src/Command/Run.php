@@ -21,14 +21,14 @@ class Run extends Command
     protected function configure()
     {
         $this
-            ->setName('run')
-            ->setDescription('Run all tasks')
-            ->addArgument(
-                'tasks', InputArgument::OPTIONAL | InputArgument::IS_ARRAY, 'list of tasks to run specifically'
-            )
-            ->addOption(
-                'drinkmenu', 'd', InputOption::VALUE_REQUIRED, 'path to the "drinkmenu.php" file - default is current directory'
-            )
+                ->setName('run')
+                ->setDescription('Run all tasks')
+                ->addArgument(
+                        'tasks', InputArgument::OPTIONAL | InputArgument::IS_ARRAY, 'list of tasks to run specifically'
+                )
+                ->addOption(
+                        'drinkmenu', 'd', InputOption::VALUE_REQUIRED, 'path to the "drinkmenu.php" file - default is current directory'
+                )
         ;
     }
 
@@ -44,14 +44,15 @@ class Run extends Command
 
             $drinks = $input->getArgument('tasks');
 
-            if (!empty($drinks)) {
-                foreach ($drinks as $task) {
-                    $task();
-                }
-            } else {
+            if (empty($drinks)) {
                 defaultTask();
+                return;
             }
-        } catch (FileNotFoundException $ex) {
+
+            foreach ($drinks as $task) {
+                $task();
+            }
+        } catch (\Exception $ex) {
             $output->writeln('<error>Execution has been interrupted by an error :</error>');
             $output->writeln('<error>' . $ex->getMessage() . '</error>');
         }

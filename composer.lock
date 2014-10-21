@@ -4,8 +4,52 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a1aacac63b44efcd33ec85b5061bc7ee",
+    "hash": "17877280340e003c7dabd5d79e7d1467",
     "packages": [
+        {
+            "name": "matthiasmullie/minify",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/matthiasmullie/minify.git",
+                "reference": "b9f4f2b107dd7c0e6124ca4cafb6caef49b7a4b0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/matthiasmullie/minify/zipball/b9f4f2b107dd7c0e6124ca4cafb6caef49b7a4b0",
+                "reference": "b9f4f2b107dd7c0e6124ca4cafb6caef49b7a4b0",
+                "shasum": ""
+            },
+            "require": {
+                "ext-pcre": "*",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.3.*",
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MatthiasMullie\\Minify\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matthias Mullie",
+                    "email": "minify@mullie.eu",
+                    "homepage": "http://www.mullie.eu",
+                    "role": "Developer"
+                }
+            ],
+            "description": "CSS & JS minifier",
+            "homepage": "http://www.minifier.org",
+            "time": "2014-10-21 06:50:28"
+        },
         {
             "name": "symfony/console",
             "version": "dev-master",
@@ -802,10 +846,13 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "matthiasmullie/minify": 20,
         "phpspec/phpspec": 20,
         "fabpot/php-cs-fixer": 20
     },
     "prefer-stable": false,
-    "platform": [],
+    "platform": {
+        "php": ">=5.4"
+    },
     "platform-dev": []
 }
