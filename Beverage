@@ -34,6 +34,4 @@ $application = new Application('Awakenweb Beverage', '0.1');
 $application->add($runner);
 $application->setDefaultCommand($runner->getName());
 $application->add(new Init());
-$application->add(new WatcherStart());
-$application->add(new WatcherStop());
 $application->run();
