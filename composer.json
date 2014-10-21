@@ -1,0 +1,25 @@
+{
+    "name": "awakenweb/beverage",
+    "description": "PHP Task Runner",
+    "keywords": ["task", "runner"],
+    "license": "MIT",
+    "require": {
+        "php": ">=5.4",
+        "symfony/console": "~2.5",
+        "matthiasmullie/minify": "dev-master"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "2.1.*@dev",
+        "fabpot/php-cs-fixer": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Awakenweb\\Beverage\\": "src/"
+        }
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "bin": ["beverage"],
+    "minimum-stability": "dev"
+}

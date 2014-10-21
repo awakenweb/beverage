@@ -1,0 +1,18 @@
+#!/usr/bin/env php
+<?php
+// application.php
+
+require_once(__DIR__ . '/vendor/autoload.php');
+
+use Awakenweb\Beverage\Command\Run;
+use Awakenweb\Beverage\Command\Watch;
+use Awakenweb\Beverage\Command\JsMinifier;
+use Awakenweb\Beverage\Command\CssMinifier;
+use Symfony\Component\Console\Application;
+
+
+$runner = new Run();
+$application = new Application('Awakenweb Beverage', '0.1');
+$application->add($runner);
+$application->setDefaultCommand($runner->getName());
+$application->run();
