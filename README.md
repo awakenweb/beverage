@@ -17,6 +17,18 @@ Prerequisites
 * PHP 5.4+
 * [Composer](https://getcomposer.org/)
 
+Install
+-------
+
+Add this to your composer.json file:
+```json
+{
+    "require": {
+        "awakenweb/beverage": "dev-master"
+    }
+}
+```
+
 Configuration
 -------------
 
