@@ -8,7 +8,7 @@
         "symfony/console": "~2",
         "symfony/filesystem": "~2",
         "symfony/process": "~2",
-        "Sumfony/finder": "~2",
+        "symfony/finder": "~2",
         "matthiasmullie/minify": "dev-master"
     },
     "autoload": {
