@@ -19,6 +19,11 @@
             "Awakenweb\\Beverage\\": "src/"
         }
     },
+    "scripts": {
+        "post-install-cmd": [
+            "vendor/bin/beverage init"
+        ]
+    },
     "config": {
         "preferred-install": "dist"
     },
