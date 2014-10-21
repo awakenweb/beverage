@@ -32,6 +32,8 @@ Here is a demo `drinkmenu.php` :
 <?php
 
 use Awakenweb\Beverage\Beverage;
+use Awakenweb\Beverage\Modules\Css;
+use Awakenweb\Beverage\Modules\Js;
 
 function defaultTask()
 {
@@ -42,16 +44,17 @@ function defaultTask()
 function minifyCss()
 {
     Beverage::files('*.css', ['css'])
-            ->then(['Awakenweb\Beverage\Modules\Css', 'process'])
+            ->then(new Css())
             ->destination('build/css');
 }
 
 function minifyJs()
 {
     Beverage::files('*.js', ['js'])
-            ->then(['Awakenweb\Beverage\Modules\Js', 'process'])
+            ->then(new Js())
             ->destination('build/js');
 }
+
 
 ```
 
@@ -67,7 +70,7 @@ Create a new module
 
 Modules are used to add new tasks types to Beverage.
 
-To add a new module, your class must implement the `Awakenweb\Beverage\Modules\Module` interface, and should therefore have a `process` static method.
+To add a new module, your class must implement the `Awakenweb\Beverage\Modules\Module` interface, and should therefore have a `process` method.
 
 This method must accept an array containing the current state of the files beeing processed, and return the updated state as an array of the same format. This is format : `[file_name1 => file_content1, file_name2 => file_content2]`
 
@@ -83,7 +86,7 @@ class SayHello implements Module
      * This is a hugely useless module that creates a copy of the files it receives and renames
      * them from "filename" to "hello_filename"
      */
-    public static function process(array $current_state) {
+    public function process(array $current_state) {
         
         $updated_state = [];
         

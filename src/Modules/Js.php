@@ -18,7 +18,7 @@ class Js implements Module
      * 
      * @return array updated_state
      */
-    public static function process(array $current_state)
+    public function process(array $current_state)
     {
         $minifier      = new Minify\Js();
         $updated_state = [];

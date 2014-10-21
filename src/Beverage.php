@@ -2,6 +2,7 @@
 
 namespace Awakenweb\Beverage;
 
+use Awakenweb\Beverage\Modules\Module;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 
@@ -22,10 +23,10 @@ class Beverage
     /**
      * Factory method. Return a new instance of the Beverage task runner
      *
-     * @param sting $filepattern
+     * @param string $filepattern
      * @param array $directory
-     * @param sting $excludepattern
-     * @return Awakenweb\Beverage\Beverage
+     * @param string $excludepattern
+     * @return Beverage
      */
     public static function files($filepattern, $directory = [__DIR__], $excludepattern = false)
     {
@@ -67,12 +68,12 @@ class Beverage
      * Run the modules
      * 
      * @param type $callbackname
-     * @return \Awakenweb\Beverage\Beverage
+     * @return Beverage
      */
-    public function then($callbackname)
+    public function then(Module $module)
     {
 
-        $this->current_state = $callbackname($this->current_state);
+        $this->current_state = $module->process($this->current_state);
 
         return $this;
     }

@@ -1,6 +1,8 @@
 <?php
 
 use Awakenweb\Beverage\Beverage;
+use Awakenweb\Beverage\Modules\Css;
+use Awakenweb\Beverage\Modules\Js;
 
 function defaultTask()
 {
@@ -11,13 +13,13 @@ function defaultTask()
 function minifyCss()
 {
     Beverage::files('*.css', ['css'])
-            ->then(['Awakenweb\Beverage\Modules\Css', 'process'])
+            ->then(new Css())
             ->destination('build/css');
 }
 
 function minifyJs()
 {
     Beverage::files('*.js', ['js'])
-            ->then(['Awakenweb\Beverage\Modules\Js', 'process'])
+            ->then(new Js())
             ->destination('build/js');
 }
