@@ -102,7 +102,7 @@ Contributing
 ------------
 
 
-__ Bugs__
+__Bugs__
 
 * If you found a bug and feel confident enough to correct it, please send a pull request with your bugfix and a unit test to identify the bug.
 
