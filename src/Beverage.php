@@ -67,7 +67,7 @@ class Beverage
     /**
      * Run the modules
      * 
-     * @param type $callbackname
+     * @param Module module
      * @return Beverage
      */
     public function then(Module $module)

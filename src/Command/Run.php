@@ -45,7 +45,7 @@ class Run extends Command
             $drinks = $input->getArgument('tasks');
 
             if (empty($drinks)) {
-                defaultTask();
+                defaultTask($output);
                 return;
             }
 
@@ -53,7 +53,7 @@ class Run extends Command
                 if (!function_exists($task)) {
                     throw new \BadFunctionCallException("Undefined task '$task'");
                 }
-                $task();
+                $task($output);
             }
         } catch (\Exception $ex) {
             $output->writeln('<error>Execution has been interrupted by an error :</error>');
