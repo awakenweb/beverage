@@ -50,6 +50,9 @@ class Run extends Command
             }
 
             foreach ($drinks as $task) {
+                if (!function_exists($task)) {
+                    throw new \BadFunctionCallException("Undefined task '$task'");
+                }
                 $task();
             }
         } catch (\Exception $ex) {
