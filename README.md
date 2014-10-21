@@ -20,7 +20,7 @@ Prerequisites
 Configuration
 -------------
 
-First, create a `drinkmenu.php` file at the root of your project.
+First, create a `drinkmenu.php` file at the root of your project. You can create a boilerplate file by running the `vendor/bin/beverage init` command.
 
 This file will contain the different tasks you will want to run.
 
