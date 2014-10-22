@@ -8,9 +8,9 @@ Some are provided by default, some are optional, some are created by the communi
 Official modules
 ----------------
 
-* `Awakenweb\Beverage\Modules\Css` __included by default in Beverage__
-* `Awakenweb\Beverage\Modules\Js` __included by default in Beverage__
-* `Awakenweb\BeverageScss\Scss`
+* [`Awakenweb\Beverage\Modules\Css`](https://github.com/awakenweb/beverage) __included by default in Beverage__
+* [`Awakenweb\Beverage\Modules\Js`](https://github.com/awakenweb/beverage) __included by default in Beverage__
+* [`Awakenweb\BeverageScss\Scss`](https://github.com/awakenweb/beverage-scss)
 * `Awakenweb\BeverageImage\Thumbnail` _in development_
 * `Awakenweb\BeverageImage\Optimize` _in development_
 * `Awakenweb\BeverageImage\Watermark` _in development_
