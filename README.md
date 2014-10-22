@@ -1,4 +1,4 @@
-beverage
+Beverage
 ========
 
 I know you love Grunt and Gulp when it comes to automate tedious tasks such as minifying CSS and JS, resizing images... Everybody does.
