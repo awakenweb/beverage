@@ -8,14 +8,14 @@
 
 namespace Awakenweb\Beverage\Command;
 
+use Exception;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Exception\FileNotFoundException;
 
-class Run extends Command
+class Watch extends Command
 {
     /**
      *
@@ -23,24 +23,17 @@ class Run extends Command
     protected function configure()
     {
         $this
-                ->setName('beverage:run')
-                ->setDescription('Run all tasks')
-                ->addArgument(
-                        'tasks', InputArgument::OPTIONAL | InputArgument::IS_ARRAY, 'list of tasks to run specifically'
-                )
-                ->addOption(
-                        'drinkmenu', 'd', InputOption::VALUE_REQUIRED, 'path to the "drinkmenu.php" file - default is current directory'
-                )
+            ->setName('beverage:watch')
+            ->setDescription('Launch the watch task')
+            ->addOption('drinkmenu', 'd', InputOption::VALUE_REQUIRED, 'path to the "drinkmenu.php" file - default is current directory')
         ;
     }
 
     /**
      *
-     * @param  InputInterface            $input
-     * @param  OutputInterface           $output
-     * @return type
+     * @param  InputInterface        $input
+     * @param  OutputInterface       $output
      * @throws FileNotFoundException
-     * @throws \BadFunctionCallException
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
@@ -51,22 +44,10 @@ class Run extends Command
             }
 
             include $filename;
+            $output->writeln('<comment>Watcher started running. Ctrl/Cmd + C to quit</comment>');
 
-            $drinks = $input->getArgument('tasks');
-
-            if (empty($drinks)) {
-                defaultTask($output);
-
-                return;
-            }
-
-            foreach ($drinks as $task) {
-                if (!function_exists($task)) {
-                    throw new \BadFunctionCallException("Undefined task '$task'");
-                }
-                $task($output);
-            }
-        } catch (\Exception $ex) {
+            watch($output);
+        } catch (Exception $ex) {
             $output->writeln('<error>Execution has been interrupted by an error :</error>');
             $output->writeln('<error>'.$ex->getMessage().'</error>');
         }

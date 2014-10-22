@@ -1,9 +1,9 @@
 #!/usr/bin/env php
 <?php
 foreach ([
-__DIR__ . '/../../autoload.php',
- __DIR__ . '/../vendor/autoload.php',
- __DIR__ . '/vendor/autoload.php'
+__DIR__.'/../../autoload.php',
+ __DIR__.'/../vendor/autoload.php',
+ __DIR__.'/vendor/autoload.php',
 ] as $file) {
     if (file_exists($file)) {
         define('BEVERAGE_COMPOSER_INSTALL', $file);
@@ -14,9 +14,9 @@ __DIR__ . '/../../autoload.php',
 unset($file);
 
 if (!defined('BEVERAGE_COMPOSER_INSTALL')) {
-    fwrite(STDERR, 'You need to set up the project dependencies using the following commands:' . PHP_EOL .
-            'wget http://getcomposer.org/composer.phar' . PHP_EOL .
-            'php composer.phar install' . PHP_EOL
+    fwrite(STDERR, 'You need to set up the project dependencies using the following commands:'.PHP_EOL.
+            'wget http://getcomposer.org/composer.phar'.PHP_EOL.
+            'php composer.phar install'.PHP_EOL
     );
     die(1);
 }
@@ -25,8 +25,7 @@ require BEVERAGE_COMPOSER_INSTALL;
 
 use Awakenweb\Beverage\Command\Init;
 use Awakenweb\Beverage\Command\Run;
-use Awakenweb\Beverage\Command\WatcherStart;
-use Awakenweb\Beverage\Command\WatcherStop;
+use Awakenweb\Beverage\Command\Watch;
 use Symfony\Component\Console\Application;
 
 $runner      = new Run();
@@ -34,4 +33,5 @@ $application = new Application('Awakenweb Beverage', '0.1');
 $application->add($runner);
 $application->setDefaultCommand($runner->getName());
 $application->add(new Init());
+$application->add(new Watch());
 $application->run();

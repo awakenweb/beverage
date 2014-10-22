@@ -12,10 +12,9 @@ use MatthiasMullie\Minify;
 
 class Js implements Module
 {
-
     /**
      * @param array $current_state
-     * 
+     *
      * @return array updated_state
      */
     public function process(array $current_state)
@@ -31,5 +30,4 @@ class Js implements Module
 
         return $updated_state;
     }
-
 }

@@ -14,11 +14,10 @@ namespace Awakenweb\Beverage\Modules;
  */
 interface Module
 {
-
     /**
-     * 
+     *
      * @param array $current_state
-     * 
+     *
      * @return array updated_state
      */
     public function process(array $current_state);

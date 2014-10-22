@@ -13,7 +13,6 @@ use Symfony\Component\Finder\Finder;
  */
 class Beverage
 {
-
     /**
      *
      * @var type
@@ -23,9 +22,9 @@ class Beverage
     /**
      * Factory method. Return a new instance of the Beverage task runner
      *
-     * @param string $filepattern
-     * @param array $directory
-     * @param string $excludepattern
+     * @param  string   $filepattern
+     * @param  array    $directory
+     * @param  string   $excludepattern
      * @return Beverage
      */
     public static function files($filepattern, $directory = [__DIR__], $excludepattern = false)
@@ -37,7 +36,7 @@ class Beverage
      * construct the Beverage task runner and select the files to manipulate
      *
      * @param string $filepattern
-     * @param array $dir
+     * @param array  $dir
      * @param string $excludepattern
      *
      */
@@ -45,8 +44,8 @@ class Beverage
     {
         $finder = new Finder();
         $finder->files()
-                ->ignoreUnreadableDirs()
-                ->name($filepattern);
+            ->ignoreUnreadableDirs()
+            ->name($filepattern);
 
         if ($excludepattern) {
             $finder->notName($excludepattern);
@@ -57,7 +56,6 @@ class Beverage
         }
 
         foreach ($finder as $matching_file) {
-
             $basename = $matching_file->getBasename();
 
             $this->current_state[$basename] = $matching_file->getContents();
@@ -66,13 +64,12 @@ class Beverage
 
     /**
      * Run the modules
-     * 
+     *
      * @param Module module
      * @return Beverage
      */
     public function then(Module $module)
     {
-
         $this->current_state = $module->process($this->current_state);
 
         return $this;
@@ -80,17 +77,15 @@ class Beverage
 
     /**
      * Define the directory where the files will be saved
-     * 
+     *
      * @param string $directory
      */
     public function destination($directory)
     {
-
         $filesystem = new Filesystem();
 
         foreach ($this->current_state as $filename => $file_content) {
-            $filesystem->dumpFile($directory . '/' . $filename, $file_content);
+            $filesystem->dumpFile($directory.'/'.$filename, $file_content);
         }
     }
-
 }
