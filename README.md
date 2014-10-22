@@ -29,6 +29,10 @@ Add this to your composer.json file:
 }
 ```
 
+Modules
+-------
+Have a look at the [Modules](MODULES.md) page
+
 Configuration
 -------------
 
