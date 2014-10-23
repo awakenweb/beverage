@@ -16,12 +16,18 @@ class Watcher
 
     protected $listeners       = ['before' => [], 'after' => []];
     protected $files_iterators = [];
+    protected $output;
 
-    public function run($output = null)
+    function __construct($output)
+    {
+        $this->output = $output;
+    }
+
+    public function run()
     {
 
         $files = [];
-
+        $this->console('<comment>Watch server running.</comment>');
         do {
             foreach ($this->files_iterators as $fi) {
                 $finder = new Finder();
@@ -49,32 +55,30 @@ class Watcher
                      * Check if the file has changed
                      */
                     if ($files[$file->getBasename()] !== $file->getMTime()) {
-                        if (!is_null($output)) {
-                            $output->writeln('File ' . $file->getBasename() . ' has been modified');
-                        }
+
+                        $this->console('File ' . $file->getBasename() . ' has been modified');
+
                         $files[$file->getBasename()] = $file->getMTime();
 
-                        $this->runBefore();
+                        try {
+                            $this->runBefore();
+                            foreach ($fi['tasks'] as $task) {
 
-                        foreach ($fi['tasks'] as $task) {
-                            if (!is_null($output)) {
-                                $output->writeln('Running ' . $task . ' task');
-                            }
-                            ;
-                            $task();
 
-                            if (!is_null($output)) {
-                                $output->writeln('Task ' . $task . ' successful');
+                                $this->console('Running ' . $task . ' task');
+                                $task();
+                                $this->console('Task ' . $task . ' successful');
                             }
+                            $this->runAfter();
+                        } catch (\Exception $ex) {
+                            $this->console("<error>An error occured when running the tasks.</error>");
                         }
-
-                        $this->runAfter();
                     }
                 }
 
                 unset($finder);
             }
-            sleep(2);
+            sleep(3);
         } while (1);
     }
 
@@ -134,13 +138,20 @@ class Watcher
         }
     }
 
-     /**
+    /**
      * Trigger the after listeners
      */
     public function runAfter()
     {
         foreach ($this->listeners['after'] as $listener) {
             $listener->update();
+        }
+    }
+
+    protected function console($message)
+    {
+        if (!is_null($output)) {
+            $output->writeln($message);
         }
     }
 

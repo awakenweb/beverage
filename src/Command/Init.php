@@ -82,9 +82,9 @@ function watch(\$output)
     // Create a watcher and define the files you want to watch and
     // the tasks that will be triggered on change
     // Then, launch the watcher
-    (new Watcher())
+    (new Watcher(\$output))
         ->watch('*.scss', ['compileScssAndMinifyCss'], ['scss'])
-        ->run(\$output);
+        ->run();
 }
 ";
 

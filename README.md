@@ -130,11 +130,11 @@ You need to import the `Awakenweb\Beverage\Watcher` module in your `drinkmenu.ph
 
 function watch($output)
 {
-    (new Watcher())
+    (new Watcher($output))
         ->beforeTasks(new RandomListener())
         ->afterTasks(new AnotherRandomListener())
         ->watch('*.scss', ['compileScssAndMinifyCss'], ['scss'])
-        ->run($output);
+        ->run();
 }
 ```
 

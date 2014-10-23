@@ -87,5 +87,6 @@ class Beverage
         foreach ($this->current_state as $filename => $file_content) {
             $filesystem->dumpFile($directory.'/'.$filename, $file_content);
         }
+        return $this;
     }
 }
