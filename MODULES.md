@@ -8,10 +8,10 @@ Some are provided by default, some are optional, some are created by the communi
 Official modules
 ----------------
 
-* `Awakenweb\Beverage\Modules\Css` __included by default in Beverage__
-* `Awakenweb\Beverage\Modules\Js` __included by default in Beverage__
-* `Awakenweb\BeverageScss\Scss`
-* `Awakenweb\BeverageImage\Thumbnail` _in development_
-* `Awakenweb\BeverageImage\Optimize` _in development_
-* `Awakenweb\BeverageImage\Watermark` _in development_
-* `Awakenweb\BeverageVersion\Version` _in development_
+* [Css minifier and concat](https://github.com/awakenweb/beverage) __included by default in Beverage__
+* [Js minifier and concat](https://github.com/awakenweb/beverage) __included by default in Beverage__
+* [Scss and Compass compiler](https://github.com/awakenweb/beverage-scss)
+* Image Thumbnail _in development_
+* Image Optimize _in development_
+* Image Watermark _in development_
+* Version files to optimize caching _in development_

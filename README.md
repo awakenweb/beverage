@@ -1,4 +1,4 @@
-beverage
+Beverage
 ========
 
 I know you love Grunt and Gulp when it comes to automate tedious tasks such as minifying CSS and JS, resizing images... Everybody does.
@@ -28,6 +28,10 @@ Add this to your composer.json file:
     }
 }
 ```
+
+Modules
+-------
+Have a look at the [Modules](MODULES.md) page
 
 Configuration
 -------------
