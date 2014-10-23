@@ -1,11 +1,28 @@
 .logo-container{
     margin-left: auto;
     margin-right: auto;
-    margin-top: 100px;
+    margin-top: 50px;
     text-align: center;
 }
 
 
-.main-title{
-    margin-bottom: 70px;
+.main-title, .content{
+    margin-bottom: 30px;
+}
+
+header,footer {
+    background-color : #4e5d6c;
+}
+
+footer hr {
+    display: block;
+    clear: both;
+    height: 0;
+    margin: 4px 0 8px;
+    padding: 0;
+    border: 1px #2b3e50 solid;
+    font-family: arial;
+    text-align: center;
+    font-size: 10px;
+    line-height: 1;
 }

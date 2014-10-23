@@ -5,35 +5,78 @@
 
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
         <title>Beverage - task runner for PHP</title>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/sandstone/bootstrap.min.css" media="screen">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/superhero/bootstrap.min.css" media="screen">
         <link rel="stylesheet" href="css/style.css" media="screen">
     </head>
     <body>
 
-        <div class="container main-title">
+        <header class="container-fluid main-title">
             <div class="jumbotron logo-container">
                 <img class="" src="img/logo-beverage.png" alt="PHP Task Runner - Beverage">
                 <h1>Beverage</h1>
-                <h2>Because Gulp doesn't have a slice of lemon!<br>
-                    <small>(nor such bad tastes for its title font)</small></h2>
+                <h2>Because Gulp.js doesn't have that extra slice of lemon!<br>
+                    <small>(nor such bad taste when choosing a logo font)</small></h2>
             </div>
-        </div>
+        </header>
 
-        <div class="container">
+        <div class="container-fluid content">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <h1>You know Diet Coke ? Discover Diet Gulp!</h1>
+                    <p class="lead">Beverage is a port of Gulp.js to PHP.</p>
+                    <h2>Why "yet-another-Gulp-clone"?</h2>
+                    <p class="lead">I personnaly love Gulp, but as a Windows user, some Unix dependecies are a hassle to install.</p>
+                    <p>Plus, I find the way NPM manages dependencie is pure chaos. Node_Modules folder alone represents 80% of the size of most of my projets.</p>
+                    <p>The goal of Beverage is to give the power of Gulp and tis ease of use to PHP projects as a Composer package.</p>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col-md-5 col-md-offset-1"><h2>Setup</h2>
-                <p>To install and setup Beverage, just follow the <a href="https://github.com/awakenweb/beverage">README</a></p>
+                    <hr>
+                    <p class="lead">Use Composer to install</p>
+                    <pre><code>{
+    "require-dev": {
+        "awakenweb/beverage" : "dev-master"
+    }
+}</code></pre>
+                    <p class="lead">Then follow the instructions of the <a href="https://github.com/awakenweb/beverage">github repository README</a></p>
                 </div>
 
                 <div class="col-md-5"><h2>Official modules</h2>
-
+                    <hr>
+                    <ul>
+                        <li>
+                            <p class="lead">CSS minifier and combiner <span class="label label-success">Included!</span></p>
+                        </li>
+                        <li>
+                            <p class="lead">JS minifier and combiner <span class="label label-success">Included!</span></p>
+                        </li>
+                        <li>
+                            <p class="lead">Scss and Compass compiler</p>
+                        </li>
+                        <li>
+                            <p class="lead">Images processing (optimize, watermark, resize, ...) <span class="label label-default">In development</span></p>
+                        </li>
+                        <li>
+                            <p class="lead">Assets versionning <span class="label label-default">In development</span></p>
+                        </li>
+                        <li>
+                            <p class="lead">Assets reloader <span class="label label-default">In development</span></p>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
 
-
-        <!--[if IE]><script src="http://code.jquery.com/jquery-1.11.1.min.js"></script></[endif]-->
-        <!--[if !IE]><!--><script src="http://code.jquery.com/jquery-2.1.1.min.js"></script><!--<![endif]-->
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <footer class="container-fluid">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-1">
+                    <h2>Beverage</h2>
+                    <hr>
+                    <p class="lead">By <a href="https://github.com/awakenweb/">Mathieu SAVELLI</a> <small>mathieu.savelli@awakenweb.fr</small></p>
+                </div>
+            </div>
+        </footer>
     </body>
 </html>
