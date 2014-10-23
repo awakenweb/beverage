@@ -15,3 +15,4 @@ Official modules
 * Image Optimize _in development_
 * Image Watermark _in development_
 * Version files to optimize caching _in development_
+* Assets reloader _in development_
