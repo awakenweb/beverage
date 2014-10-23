@@ -86,7 +86,7 @@ Modules are used to add new tasks types to Beverage.
 
 To add a new module, your class must implement the `Awakenweb\Beverage\Modules\Module` interface, and should therefore have a `process` method.
 
-This method must accept an array containing the current state of the files beeing processed, and return the updated state as an array of the same format. This is format : `[file_name1 => file_content1, file_name2 => file_content2]`
+This method must accept an array containing the current state of the files beeing processed, and return the updated state as an array of the same format. This is the format of the array : `[file_name1 => file_content1, file_name2 => file_content2]`
 
 ```php
 <?php
@@ -127,10 +127,16 @@ You need to import the `Awakenweb\Beverage\Watcher` module in your `drinkmenu.ph
 function watch($output)
 {
     (new Watcher())
+        ->beforeTasks(new RandomListener())
+        ->afterTasks(new AnotherRandomListener())
         ->watch('*.scss', ['compileScssAndMinifyCss'], ['scss'])
         ->run($output);
 }
 ```
+
+The `beforeTasks` and `afterTasks` methods allow you to register hooks that will be triggered before and after your tasks when the files are changed.
+
+These hooks must implement the `Awakenweb\Beverage\Watcher`Listener` that only needs a `update()` method.
 
 By allowing a $output parameter, you give the watcher a way to tell you when a task
 is triggered and when it's done.
