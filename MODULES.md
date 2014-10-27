@@ -11,8 +11,12 @@ Official modules
 * [Css minifier and concat](https://github.com/awakenweb/beverage) __included by default in Beverage__
 * [Js minifier and concat](https://github.com/awakenweb/beverage) __included by default in Beverage__
 * [Scss and Compass compiler](https://github.com/awakenweb/beverage-scss)
-* Image Thumbnail _in development_
-* Image Optimize _in development_
-* Image Watermark _in development_
+* [Less compiler](https://github.com/awakenweb/beverage-less)
+* Image Resizer _in development_
+* Image Optimizer _in development_
+* Image Watermarker _in development_
 * Version files to optimize caching _in development_
-* Assets reloader _in development_
+* PHP CS Fixer _in development_
+* Simple text replace _in development_
+* Temp files cleaner _in development_
+

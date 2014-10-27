@@ -83,42 +83,6 @@ Options
 
 You can use the `--drinkmenu` option to specify where to find the drinkmenu.php file, or if you renamed it.
 
-Create a new module
--------------------
-
-Modules are used to add new tasks types to Beverage.
-
-To add a new module, your class must implement the `Awakenweb\Beverage\Modules\Module` interface, and should therefore have a `process` method.
-
-This method must accept an array containing the current state of the files beeing processed, and return the updated state as an array of the same format. This is the format of the array : `[file_name1 => file_content1, file_name2 => file_content2]`
-
-```php
-<?php
-
-use Awakenweb\Beverage\Modules\Module;
-
-class SayHello implements Module
-{
-
-    /**
-     * This is a hugely useless module that creates a copy of the files it receives and renames
-     * them from "filename" to "hello_filename"
-     */
-    public function process(array $current_state) {
-
-        $updated_state = [];
-
-        foreach($current_state as $filename => $file_content) {
-            $updated_state['hello_'.$filename] = $file_content;
-        }
-
-        return $updated_state;
-
-    }
-
-}
-```
-
 File Watcher
 ------------
 
