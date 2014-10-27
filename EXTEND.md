@@ -1,7 +1,7 @@
 Extend Beverage
 ===============
 
-Beverage is modular and is based on Symfony Console component.
+Beverage is modular and is based (mostly) on Symfony components.
 
 You can simply extend it by creating your own custom modules and commands.
 
