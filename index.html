@@ -25,7 +25,7 @@
                     <h1>Beverage is a port of Gulp.js to PHP.</h1>
                     <p class="lead">I personnaly love Gulp, but as a Windows user, most Unix dependecies are a hassle to install.</p>
                     <p>Plus, I find the way NPM manages dependencie is pure chaos. <code>node_nodules</code> folder alone represents 80% of the size of most of my projets.</p>
-                    <p>The goal of Beverage is to give the power of Gulp and its ease of use to PHP projects as a Composer package, when Node.js is not an option.</p>
+                    <p>The goal of Beverage is to give the power of Gulp and its ease of use to PHP projects as a Composer package, in situations where Node.js is not an option.</p>
                 </div>
             </div>
 
@@ -41,12 +41,6 @@
                     <p>Run <code>composer install --prefer-dist</code> to install dependencies</p>
                     <p>Run <code>vendor/bin/beverage beverage:init</code> command to get a boilerplate <code>drinkmenu.php</code> file</p>
                     <p>Then follow the instructions of the <a href="https://github.com/awakenweb/beverage">github repository README</a></p>
-
-                    <hr>
-
-                    <h2>Extend</h2>
-
-                    <p>To create your own modules, commands and watcher listeners, follow the instructions in <a href="https://github.com/awakenweb/beverage/blob/master/EXTEND.md">the EXTEND.md file</a></p>
                 </div>
 
                 <div class="col-md-5"><h2>Official modules</h2>
@@ -65,13 +59,10 @@
                             <p><a href="https://github.com/awakenweb/beverage-less">Less compiler</a></p>
                         </li>
                         <li>
-                            <p>Images optimizer <span class="label label-default">In development</span></p>
+                            <p>Stylus compiler <span class="label label-default">In development</span></p>
                         </li>
                         <li>
-                            <p>Images resizer <span class="label label-default">In development</span></p>
-                        </li>
-                        <li>
-                            <p>Images wartermarker <span class="label label-default">In development</span></p>
+                            <p>Images optimizer, resizer, and wartermarker <span class="label label-default">In development</span></p>
                         </li>
                         <li>
                             <p>Assets versionning <span class="label label-default">In development</span></p>
@@ -85,7 +76,46 @@
                         <li>
                             <p>PHP CS Fixer <span class="label label-default">In development</span></p>
                         </li>
+                        <li>
+                            <p>Tests: PHPUnit, Atoum, PHPSpec, Codeception... <span class="label label-default">In development</span></p>
+                        </li>
+                        <li>
+                            <p>PHP Documentor <span class="label label-default">In development</span></p>
+                        </li>
+                        <li>
+                            <p>and a lot more to come...</p>
+                        </li>
                     </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                     <h2>Extend</h2>
+
+                    <p>To create your own modules, commands and watcher listeners, follow the instructions in <a href="https://github.com/awakenweb/beverage/blob/master/EXTEND.md">the EXTEND.md file</a></p>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <h2>Questions and Answers</h2>
+
+                    <dl>
+                        <dt>Why don't you provide a module for "<em>X</em>"?</dt>
+                        <dd>As a PHP-only project, I rely on the disponiblity of Composer packages that provide said functionality. Some of these packages are ridiculously outdated (i.e. CoffeeScript Composer package targets version 1.3 when current version is 1.8), some require Node.js (Autoprefixer), and some don't even exist.
+                            I definitely don't want to add official modules that would require Node.js (Autoprefixer, Livereload, etc) as the goal of the project is to avoid using Node.js as much as possible.<br>
+                            Beverage is also framework agnostic. I won't include by default framework specific packages.<br>
+                            Beverage is really easy to extend. If you want to provide a module for a specific functionality, feel free to create it.</dd>
+                        <hr>
+                        <dt>Is Beverage asynchronous?</dt>
+                        <dd>One of the strengths of Gulp, compared to Grunt, is its ability to run tasks in parallel.<br>
+                            Beverage is not asynchronous for now. I plan to add this functionnality in a near future (no ETA yet) and allow to run tasks in parallel to speed up the whole process.<br>
+                            I also want to provide it in a cross-platform way. As a Windows user, I don't want to need a virtual machine only to compile my project assets.</dd>
+                        <hr>
+                        <dt></dt>
+                        <dd></dd>
+                    </dl>
                 </div>
             </div>
         </div>
