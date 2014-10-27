@@ -104,7 +104,7 @@ namespace Awakenweb\MyModule;
 
 use Awakenweb\Beverage\Watcher\Listener;
 
-class SayHelloBeforeTasksAreRun implements Listener {
+class SayHello implements Listener {
 
     protected $output;
 
@@ -122,3 +122,23 @@ class SayHelloBeforeTasksAreRun implements Listener {
 }
 
 ```
+
+To register your listener, add it to your watch() task in your drinkmenu.php file
+
+```php
+<?php
+
+use Awakenweb\MyModule\SayHello;
+
+function watch($output)
+{
+
+    (new Watcher($output))
+        ->watch('*.scss', ['compileScssAndMinifyCss'], ['scss'])
+        ->watch('*.js', ['minifyJs'], ['js'])
+        ->afterTasks(new SayHello($output))
+        ->run();
+}
+```
+
+`SayHello` will then be called everytime a scss or js file is modified, after the end of the tasks.
