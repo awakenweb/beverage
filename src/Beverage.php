@@ -80,6 +80,13 @@ class Beverage
         return $this;
     }
 
+    /**
+     * 
+     * @param type $filepattern
+     * @param type $dir
+     * @param type $excludepattern
+     * @return \Awakenweb\Beverage\Beverage
+     */
     public function add($filepattern, $dir, $excludepattern)
     {
 
