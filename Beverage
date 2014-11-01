@@ -1,9 +1,9 @@
 #!/usr/bin/env php
 <?php
 foreach ([
-__DIR__.'/../../autoload.php',
- __DIR__.'/../vendor/autoload.php',
- __DIR__.'/vendor/autoload.php',
+__DIR__ . '/../../autoload.php',
+ __DIR__ . '/../vendor/autoload.php',
+ __DIR__ . '/vendor/autoload.php',
 ] as $file) {
     if (file_exists($file)) {
         define('BEVERAGE_COMPOSER_INSTALL', $file);
@@ -14,24 +14,31 @@ __DIR__.'/../../autoload.php',
 unset($file);
 
 if (!defined('BEVERAGE_COMPOSER_INSTALL')) {
-    fwrite(STDERR, 'You need to set up the project dependencies using the following commands:'.PHP_EOL.
-            'wget http://getcomposer.org/composer.phar'.PHP_EOL.
-            'php composer.phar install'.PHP_EOL
+    fwrite(STDERR, 'You need to set up the project dependencies using the following commands:' . PHP_EOL .
+        'wget http://getcomposer.org/composer.phar' . PHP_EOL .
+        'php composer.phar install' . PHP_EOL
     );
     die(1);
 }
 
-require BEVERAGE_COMPOSER_INSTALL;
+require_once BEVERAGE_COMPOSER_INSTALL;
+require_once './drinkmenu.php';
 
-use Awakenweb\Beverage\Command\Init;
+use Awakenweb\Beverage\Bootstrapper;
 use Awakenweb\Beverage\Command\Run;
-use Awakenweb\Beverage\Command\Watch;
 use Symfony\Component\Console\Application;
 
 $runner      = new Run();
-$application = new Application('Awakenweb Beverage', '0.1');
+$application = new Application('Beverage task runner', '0.2');
 $application->add($runner);
 $application->setDefaultCommand($runner->getName());
-$application->add(new Init());
-$application->add(new Watch());
+$application = Bootstrapper::registerCommands($application, [
+        'Awakenweb\Beverage\Command\Init',
+        'Awakenweb\Beverage\Command\Watch',
+    ]);
+
+if (function_exists('register_custom_commands') && is_array(register_custom_commands())) {
+    $application = Bootstrapper::registerCommands($application, register_custom_commands());
+}
+
 $application->run();

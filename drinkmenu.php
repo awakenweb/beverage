@@ -6,8 +6,19 @@
  */
 use Awakenweb\Beverage\Beverage;
 use Awakenweb\Beverage\Modules\Css;
-use Awakenweb\BeverageScss\Scss; // this one is an optional module
 use Awakenweb\Beverage\Watcher;
+use Awakenweb\BeverageScss\Scss; // this one is an optional module
+
+
+/**
+ * This init function allows you to add custom commands to the Beverage CLI tool
+ * Simply add the full name of your command class (including namespace)
+ * Your class should extend the Symfony\Component\Console\Command\Command class
+ */
+function register_custom_commands(){
+    return [];
+}
+
 
 /**
  * The defaultTask is mandatory, as it is automatically called when no arguments
