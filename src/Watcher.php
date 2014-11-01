@@ -32,8 +32,8 @@ class Watcher
             foreach ($this->files_iterators as $fi) {
                 $finder = new Finder();
                 $finder->files()
-                    ->ignoreUnreadableDirs()
-                    ->name($fi['filepattern']);
+                        ->ignoreUnreadableDirs()
+                        ->name($fi['filepattern']);
 
                 if ($fi['excludepattern']) {
                     $finder->notName($fi['excludepattern']);
@@ -150,8 +150,8 @@ class Watcher
 
     protected function console($message)
     {
-        if (!is_null($output)) {
-            $output->writeln($message);
+        if (!is_null($this->output)) {
+            $this->output->writeln($message);
         }
     }
 

@@ -13,6 +13,7 @@ use Symfony\Component\Finder\Finder;
  */
 class Beverage
 {
+
     /**
      *
      * @var type
@@ -42,24 +43,7 @@ class Beverage
      */
     protected function __construct($filepattern, $dir, $excludepattern)
     {
-        $finder = new Finder();
-        $finder->files()
-            ->ignoreUnreadableDirs()
-            ->name($filepattern);
-
-        if ($excludepattern) {
-            $finder->notName($excludepattern);
-        }
-
-        foreach ($dir as $directory) {
-            $finder->in($directory);
-        }
-
-        foreach ($finder as $matching_file) {
-            $basename = $matching_file->getBasename();
-
-            $this->current_state[$basename] = $matching_file->getContents();
-        }
+        $this->add($filepattern, $dir, $excludepattern);
     }
 
     /**
@@ -76,7 +60,10 @@ class Beverage
     }
 
     /**
-     * Define the directory where the files will be saved
+     * Define the directory where the files will be saved.
+     * 
+     * Once the files have been saves, the current state of files is unset to
+     * save memory
      *
      * @param string $directory
      */
@@ -85,8 +72,37 @@ class Beverage
         $filesystem = new Filesystem();
 
         foreach ($this->current_state as $filename => $file_content) {
-            $filesystem->dumpFile($directory.'/'.$filename, $file_content);
+            $filesystem->dumpFile($directory . '/' . $filename, $file_content);
         }
+
+        unset($this->current_state);
+
         return $this;
     }
+
+    public function add($filepattern, $dir, $excludepattern)
+    {
+
+        $finder = new Finder();
+        $finder->files()
+                ->ignoreUnreadableDirs()
+                ->name($filepattern);
+
+        if ($excludepattern) {
+            $finder->notName($excludepattern);
+        }
+
+        foreach ($dir as $directory) {
+            $finder->in($directory);
+        }
+
+        foreach ($finder as $matching_file) {
+            $basename = $matching_file->getBasename();
+
+            $this->current_state[$basename] = $matching_file->getContents();
+        }
+
+        return $this;
+    }
+
 }
