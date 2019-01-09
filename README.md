@@ -1,3 +1,6 @@
+This package is not maintained anymore, a fun mini project keeped as archive only
+=================================================================================
+
 Beverage
 ========
 
